@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 173210993}
   - component: {fileID: 173210995}
   - component: {fileID: 173210996}
+  - component: {fileID: 173210997}
+  - component: {fileID: 173210998}
   m_Layer: 0
   m_Name: Chompi
   m_TagString: Untagged
@@ -229,7 +231,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &173210996
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -246,6 +248,41 @@ CapsuleCollider2D:
   m_Offset: {x: -0.024413824, y: 0.0072813034}
   m_Size: {x: 0.09491444, y: 0.14117241}
   m_Direction: 0
+--- !u!114 &173210997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173210992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88620b48895c9ac45bb5a2b7308032fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 3008198245368202047, guid: ba4da9835ae488740bd2ba16286c5720, type: 3}
+  Speed: 1
+  JumpForce: 150
+--- !u!95 &173210998
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173210992}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac833b2da8358f64682e659f4b4ca182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &439347957
 GameObject:
   m_ObjectHideFlags: 0
