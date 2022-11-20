@@ -9,8 +9,11 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 position = transform.position; //indica la posicion de Chompi en el mapa
-        position.x = Chompi.transform.position.x;
-        transform.position = position;
+        if (Chompi != null)
+        {
+            Vector3 position = transform.position; //indica la posicion de Chompi en el mapa
+            position.x = Chompi.transform.position.x;
+            transform.position = position;
+        }
     }
 }

@@ -12,6 +12,7 @@ public class ChompiMovement : MonoBehaviour
     private Animator Animator; //Componente encargado de la transicion de animaciones
     private float Horizontal; //valor encargado de el movimiento de adelante y hacia atras (-1, 1)
     private float LastShoot; //almacena el tiempo en el que hizo el último disparo
+    private int Health = 5;
 
     void Start() //setup
     {
@@ -21,8 +22,7 @@ public class ChompiMovement : MonoBehaviour
 
     void Update() //loop
     {
-        Horizontal = Input.GetAxisRaw("Horizontal"); //Capura la entrada del usuario (-1,1)
-
+        Horizontal = Input.GetAxisRaw("Horizontal"); //Capura la entrada del usuario (-1,1) 
 
 
         if (Horizontal < 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); //condicion encargada de cambiar la posicion de Chompi si se dirige   
@@ -65,8 +65,8 @@ public class ChompiMovement : MonoBehaviour
         Vector3 direction; //crea la direccion
         if (transform.localScale.x == 1.0f) direction = Vector3.right; //si se cumple es que vamos a la derecha
         else direction = Vector3.left; //sino es que estamos orientados a la izquierda
-
-        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity); //es la instancia que crea la bala
+        // Se instancia la direccion 
+        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity); //es la instancia 
         bullet.GetComponent<BulletScript>().SetDirection(direction); //llama al metodo de Bullet Script que indica la direccion de la bala
     }
 
@@ -74,5 +74,11 @@ public class ChompiMovement : MonoBehaviour
     private void FixedUpdate() //Metodo que actualiza el movimiento del personaje porque la velocidad puede cambiar
     {
         Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y); //cambia la direccion de Chompi
+    }
+
+    public void Hit()
+    {
+        Health -= 1;
+        if (Health == 0) Destroy(gameObject);
     }
 }

@@ -5,20 +5,16 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
 
-    private Rigidbody2D Rigidbody2D;
+    private Rigidbody2D Rigidbody2D; 
     public float Speed;
     private Vector2 Direction;
+    public AudioClip Sound;
 
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(Sound);
     }
 
     public void SetDirection(Vector2 direction)
@@ -29,7 +25,6 @@ public class BulletScript : MonoBehaviour
     private void FixedUpdate()
     {
         Rigidbody2D.velocity = Direction * Speed;
-       
     }
 
     public void DestroyBullet()
@@ -37,4 +32,18 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject); //destruye la bala cuando abarca todas las animaciones 
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Andatti_Script andatti = other.GetComponent<Andatti_Script>();
+        ChompiMovement chompi = other.GetComponent<ChompiMovement>();
+        if (andatti != null)
+        {
+            andatti.Hit();
+        }
+        if (chompi != null)
+        {
+            chompi.Hit();
+        }
+        DestroyBullet();
+    }
 }
