@@ -6,9 +6,15 @@ public class Andatti_Script : MonoBehaviour
 {
     public Transform Chompi;
     public GameObject BulletPrefab;
+    private Animator Animator;
 
     private int Health = 3;
     private float LastShoot;
+
+    void Start()
+    {
+        Animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -38,6 +44,18 @@ public class Andatti_Script : MonoBehaviour
     public void Hit()
     {
         Health -= 1;
-        if (Health == 0) Destroy(gameObject);
+        if (Health == 0)
+        {
+            Animator.SetBool("muerte", true);
+            Invoke("destruirEnemigo", 0.9f);
+            
+           
+    
+        }
+    }
+
+    public void destruirEnemigo()
+    {
+        Destroy(gameObject);
     }
 }
