@@ -1,6 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
+using System;
+
+
 
 public class ChompiMovement : MonoBehaviour
 {
@@ -13,6 +19,12 @@ public class ChompiMovement : MonoBehaviour
     private float Horizontal; //valor encargado de el movimiento de adelante y hacia atras (-1, 1)
     private float LastShoot; //almacena el tiempo en el que hizo el último disparo
     private int Health = 5;
+    public GameObject uiStandBy;
+    public enum GameState { Espera, Corriendo };
+    public GameState gameState = GameState.Espera;
+    public bool tieso = false;
+    public TMP_Text vidas;
+    public Text contadorVidas;
 
     void Start() //setup
     {
@@ -22,7 +34,26 @@ public class ChompiMovement : MonoBehaviour
 
     void Update() //loop
     {
-        Horizontal = Input.GetAxisRaw("Horizontal"); //Capura la entrada del usuario (-1,1) 
+        if (Health == 0)
+        {
+            muerte();
+            Invoke("mostrarInicio", 1.5f);
+            gameState = GameState.Espera;
+            Invoke("ReiniciarJuego", 1.5f);
+        }
+
+        mostrarTotalVidas();
+
+
+        if (gameState == GameState.Espera && Input.GetMouseButtonDown(0))
+        {
+            gameState = GameState.Corriendo;
+            uiStandBy.SetActive(false);
+            tieso = false;
+        }
+        else if (gameState == GameState.Corriendo)
+        { 
+            Horizontal = Input.GetAxisRaw("Horizontal"); //Capura la entrada del usuario (-1,1) 
 
 
         if (Horizontal < 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); //condicion encargada de cambiar la posicion de Chompi si se dirige   
@@ -43,6 +74,7 @@ public class ChompiMovement : MonoBehaviour
         // Salto
         if (Input.GetKeyDown(KeyCode.W) && Grounded) //si presiona la W, llama al metodo Jump
         {
+            //Debug.Log("salto");
             Jump();
         }
 
@@ -52,7 +84,7 @@ public class ChompiMovement : MonoBehaviour
             Shoot();
             LastShoot = Time.time; //guarda el tiempo en que disparamos
         }
-
+    }
     }
 
     private void Jump()
@@ -62,12 +94,16 @@ public class ChompiMovement : MonoBehaviour
 
     private void Shoot()
     {
-        Vector3 direction; //crea la direccion
-        if (transform.localScale.x == 1.0f) direction = Vector3.right; //si se cumple es que vamos a la derecha
-        else direction = Vector3.left; //sino es que estamos orientados a la izquierda
-        // Se instancia la direccion 
-        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity); //es la instancia 
-        bullet.GetComponent<BulletScript>().SetDirection(direction); //llama al metodo de Bullet Script que indica la direccion de la bala
+            Vector3 direction; //crea la direccion
+            if (transform.localScale.x == 1.0f) direction = Vector3.right; //si se cumple es que vamos a la derecha
+            else direction = Vector3.left; //sino es que estamos orientados a la izquierda
+                                           // Se instancia la direccion 
+
+        if (Health > 0)
+        {
+            GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity); //es la instancia 
+            bullet.GetComponent<BulletScript>().SetDirection(direction); //llama al metodo de Bullet Script que indica la direccion de la bala
+        }
     }
 
 
@@ -79,6 +115,60 @@ public class ChompiMovement : MonoBehaviour
     public void Hit()
     {
         Health -= 1;
-        if (Health == 0) Destroy(gameObject);
+
     }
+
+    public void muerte()
+    {
+        Horizontal = 0;
+        //Rigidbody2D.AddForce(Vector2.up *6);
+        Animator.SetBool("muerte", true);
+        tieso = true;
+    }
+
+    public void DestruirPersonaje()
+    {
+        Destroy(gameObject);
+    }
+
+    public void ReiniciarJuego()
+    {
+ 
+        SceneManager.LoadScene("Runner");
+
+    }
+
+    public void mostrarInicio()
+    {
+        uiStandBy.SetActive(true);
+    }
+
+    public void mostrarTotalVidas()
+    {
+        if (Health == 5)
+        {
+            vidas.text = "Vidas: 5";
+        }else if (Health == 4)
+        {
+            vidas.text = "Vidas: 4";
+        }
+        else if (Health == 3)
+        {
+            vidas.text = "Vidas: 3";
+        }
+        else if (Health == 2)
+        {
+            vidas.text = "Vidas: 2";
+        }
+        else if (Health == 1)
+        {
+            vidas.text = "Vidas: 1";
+        }
+        else if (Health <= 0)
+        {
+            vidas.text = "Mamaste palo padrino";
+        }
+
+    }
+
 }
