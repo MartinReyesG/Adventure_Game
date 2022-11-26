@@ -25,6 +25,7 @@ public class ChompiMovement : MonoBehaviour
     public bool tieso = false;
     public TMP_Text vidas;
     public Text contadorVidas;
+    //private xInicial;
 
     void Start() //setup
     {
@@ -36,10 +37,7 @@ public class ChompiMovement : MonoBehaviour
     {
         if (Health == 0)
         {
-            muerte();
-            Invoke("mostrarInicio", 1.5f);
-            gameState = GameState.Espera;
-            Invoke("ReiniciarJuego", 1.5f);
+            mamastePalo();
         }
 
         mostrarTotalVidas();
@@ -138,6 +136,20 @@ public class ChompiMovement : MonoBehaviour
 
     }
 
+    public void mamastePalo()
+    {
+        muerte();
+
+        Invoke("mostrarInicio", 1.5f);
+        gameState = GameState.Espera;
+        Invoke("ReiniciarJuego", 1.5f);
+    }
+
+    public void niModoPa() {
+        vidas.text = "Mamaste palo padrino";
+        ReiniciarJuego();
+    }
+
     public void mostrarInicio()
     {
         uiStandBy.SetActive(true);
@@ -170,5 +182,11 @@ public class ChompiMovement : MonoBehaviour
         }
 
     }
-
+    public void sumarVidas()
+    {
+        if (Health<5)
+        {
+            Health++;
+        }
+    }
 }
