@@ -18,7 +18,7 @@ public class ChompiMovement : MonoBehaviour
     private Animator Animator; //Componente encargado de la transicion de animaciones
     private float Horizontal; //valor encargado de el movimiento de adelante y hacia atras (-1, 1)
     private float LastShoot; //almacena el tiempo en el que hizo el último disparo
-    private int Health = 5;
+    private int Health = 10;
     public GameObject uiStandBy;
     public enum GameState { Espera, Corriendo };
     public GameState gameState = GameState.Espera;
@@ -112,6 +112,7 @@ public class ChompiMovement : MonoBehaviour
 
     public void Hit()
     {
+       // Animator.SetBool("herida", true);
         Health -= 1;
 
     }
@@ -146,7 +147,7 @@ public class ChompiMovement : MonoBehaviour
     }
 
     public void niModoPa() {
-        vidas.text = "Mamaste palo padrino";
+        vidas.text = "Perdiste mi rey :(";
         ReiniciarJuego();
     }
 
@@ -157,10 +158,30 @@ public class ChompiMovement : MonoBehaviour
 
     public void mostrarTotalVidas()
     {
-        if (Health == 5)
+        if (Health == 10)
+        {
+            vidas.text = "Vidas: 10";
+        }else if (Health == 9)
+        {
+            vidas.text = "Vidas: 9";
+        }
+        else if (Health == 8)
+        {
+            vidas.text = "Vidas: 8";
+        }
+        else if (Health == 7)
+        {
+            vidas.text = "Vidas: 7";
+        }
+        else if (Health ==6)
+        {
+            vidas.text = "Vidas: 6";
+        }
+        else if (Health == 5)
         {
             vidas.text = "Vidas: 5";
-        }else if (Health == 4)
+        }
+        else if (Health == 4)
         {
             vidas.text = "Vidas: 4";
         }
@@ -178,13 +199,13 @@ public class ChompiMovement : MonoBehaviour
         }
         else if (Health <= 0)
         {
-            vidas.text = "Mamaste palo padrino";
+            vidas.text = "Perdiste mi rey :(";
         }
 
     }
     public void sumarVidas()
     {
-        if (Health<5)
+        if (Health<10)
         {
             Health++;
         }
