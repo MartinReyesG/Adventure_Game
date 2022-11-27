@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  Sound: {fileID: 8300000, guid: 24206e536265b934dbcf95ea64d02dea, type: 3}
+  disparo: {fileID: 8300000, guid: 24206e536265b934dbcf95ea64d02dea, type: 3}
 --- !u!50 &3008198245368202018
 Rigidbody2D:
   serializedVersion: 4

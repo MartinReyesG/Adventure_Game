@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class ColisionInferior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        FindObjectOfType<ChompiMovement>().SendMessage("niModoPa");
+       // FindObjectOfType<ChompiMovement>().SendMessage("niModoPa");
+
+        
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<ChompiMovement>().niModoPa();
+            //audio.PlayOneShot(sonidoVidas);
+           // ControladorSonidos.Instance.EjecutarSonido(sonidoVidas);
+          //  Destroy(gameObject);
+
+        
+        }
     }
 }

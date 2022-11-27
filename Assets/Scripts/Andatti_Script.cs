@@ -12,16 +12,27 @@ public class Andatti_Script : MonoBehaviour
     private float LastShoot;
 
 
-    //[SerializeField] private float velocidad;
-   // [SerializeField] private Transform ControladorSuelo;
-  //  [SerializeField] private float distancia;
-  //  [SerializeField] private bool movimiendoDerecha;
+    public AudioClip andas_flex;
+    public AudioClip apuntele_bien;
+    public AudioClip esta_facil_como_tu_ma;
+    public AudioClip no_debi_haber_hecho_eso;
+    public AudioClip si_le_sabes_que;
+    public AudioClip sigan_viendo;
+    public AudioClip sique;
+
+
+    private int selectorAudio;
+
+
     private Rigidbody2D rb;
 
     void Start()
     {
         Animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+      
+
     }
 
     void Update()
@@ -65,6 +76,43 @@ public class Andatti_Script : MonoBehaviour
         Health -= 1;
         if (Health == 0)
         {
+            selectorAudio = Random.Range(1, 7);
+
+            switch (selectorAudio)
+            {
+                case 1:
+                    Debug.Log("1");
+                    ControladorSonidos.Instance.EjecutarSonido(andas_flex);
+                    break;
+                case 2:
+                    Debug.Log("2");
+                    ControladorSonidos.Instance.EjecutarSonido(apuntele_bien);
+                    break;
+                case 3:
+                    Debug.Log("3");
+                    ControladorSonidos.Instance.EjecutarSonido(esta_facil_como_tu_ma);
+                    break;
+                case 4:
+                    Debug.Log("4");
+                    ControladorSonidos.Instance.EjecutarSonido(no_debi_haber_hecho_eso);
+                    break;
+                case 5:
+                    Debug.Log("5");
+                    ControladorSonidos.Instance.EjecutarSonido(si_le_sabes_que);
+                    break;
+                case 6:
+                    Debug.Log("6");
+                    ControladorSonidos.Instance.EjecutarSonido(sigan_viendo);
+                    break;
+                case 7:
+                    Debug.Log("7");
+                    ControladorSonidos.Instance.EjecutarSonido(sique);
+                    break;
+                default:
+                    Debug.Log("0");
+                    break;
+            }
+            //ControladorSonidos.Instance.EjecutarSonido(muerteFinal);
             Animator.SetBool("muerte", true);
             Invoke("destruirEnemigo", 0.9f);
     

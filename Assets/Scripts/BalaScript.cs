@@ -7,13 +7,13 @@ public class BalaScript : MonoBehaviour
     private Rigidbody2D Rigidbody2D;
     public float Speed;
     private Vector2 Direction;
-    //public AudioClip Sound;
+    public AudioClip disparo;
 
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
-      //  Camera.main.GetComponent<AudioSource>().PlayOneShot(Sound);
+        ControladorSonidos.Instance.EjecutarSonido(disparo);
     }
 
     public void SetDirection(Vector2 direction)

@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
+  disparo: {fileID: 8300000, guid: 2870e243f6644a640afbcdc9b2bceefe, type: 3}
 --- !u!50 &2241953223427012168
 Rigidbody2D:
   serializedVersion: 4

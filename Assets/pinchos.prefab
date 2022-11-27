@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbdf6103abfd5a44a0ca63014358345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "tiempoEntreDa\xF1o": 1
+  heridaDePincho: {fileID: 8300000, guid: 069fda25ed63b2c4fb1ade78e1611c9e, type: 3}
 --- !u!61 &7330155700999694121
 BoxCollider2D:
   m_ObjectHideFlags: 0

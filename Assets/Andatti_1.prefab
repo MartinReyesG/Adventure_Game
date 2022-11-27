@@ -194,3 +194,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chompi: {fileID: 0}
   BulletPrefab: {fileID: 8266517954707345178, guid: 399da3684c5238e428ba7a70d1144e12, type: 3}
+  andas_flex: {fileID: 8300000, guid: 3cd33fed064cacd45b2bf8077f158d0a, type: 3}
+  apuntele_bien: {fileID: 8300000, guid: b7fb141eab791f247980e8a6d0bf9e21, type: 3}
+  esta_facil_como_tu_ma: {fileID: 8300000, guid: 885479a1f230b4a468e8b0cf009e0810, type: 3}
+  no_debi_haber_hecho_eso: {fileID: 8300000, guid: 41fdb75ac22165c42965a79d5f9d1235, type: 3}
+  si_le_sabes_que: {fileID: 8300000, guid: ba3ac2df2065eb0408935e8f0c80774a, type: 3}
+  sigan_viendo: {fileID: 8300000, guid: 682279c9bf9ad5347be99f2eac4a310d, type: 3}
+  sique: {fileID: 8300000, guid: 55e5f04efecaad04f9850b1e6242fc3c, type: 3}

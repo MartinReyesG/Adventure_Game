@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class Pinchos : MonoBehaviour
 {
-    [SerializeField] private float tiempoEntreDaño;
-    private float tiempoSiguienteDaño;
+    [SerializeField] private AudioClip heridaDePincho;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            tiempoSiguienteDaño -= Time.deltaTime;
-            if (tiempoSiguienteDaño<=0) {
                 other.GetComponent<ChompiMovement>().Hit();
-                tiempoSiguienteDaño = tiempoEntreDaño;
-                Debug.Log("pincho");
-            }
+            ControladorSonidos.Instance.EjecutarSonido(heridaDePincho);
+           // Debug.Log("pincho");
         }
 
       

@@ -25,6 +25,11 @@ public class ChompiMovement : MonoBehaviour
     public bool tieso = false;
     public TMP_Text vidas;
     public Text contadorVidas;
+    private bool uno=false, cinco=false;
+
+   // [SerializeField] private AudioClip salto;
+    [SerializeField] private AudioClip unoDeVida_perdonMaiky;
+    [SerializeField] private AudioClip cincoDeVida_pinchesVatos;
     //private xInicial;
 
     void Start() //setup
@@ -88,6 +93,7 @@ public class ChompiMovement : MonoBehaviour
     private void Jump()
     {
         Rigidbody2D.AddForce(Vector2.up * JumpForce); //añade una fuerza hacia arriba
+       // ControladorSonidos.Instance.EjecutarSonido(salto);
     }
 
     private void Shoot()
@@ -141,21 +147,24 @@ public class ChompiMovement : MonoBehaviour
     {
         muerte();
 
-        Invoke("mostrarInicio", 1.5f);
+       // Invoke("mostrarInicio", 5.3f);
         gameState = GameState.Espera;
-        Invoke("ReiniciarJuego", 1.5f);
+        Invoke("ReiniciarJuego", 5.3f);
     }
 
     public void niModoPa() {
         vidas.text = "Perdiste mi rey :(";
-        ReiniciarJuego();
+        ControladorSonidos.Instance.EjecutarSonido(unoDeVida_perdonMaiky);
+        Invoke("ReiniciarJuego", 5.3f);
+        //ReiniciarJuego();
     }
 
+    /*
     public void mostrarInicio()
     {
         uiStandBy.SetActive(true);
     }
-
+    */
     public void mostrarTotalVidas()
     {
         if (Health == 10)
@@ -180,6 +189,12 @@ public class ChompiMovement : MonoBehaviour
         else if (Health == 5)
         {
             vidas.text = "Vidas: 5";
+            
+            if (!cinco)
+            {
+                ControladorSonidos.Instance.EjecutarSonido(cincoDeVida_pinchesVatos);
+            }
+            cinco = true;
         }
         else if (Health == 4)
         {
@@ -200,6 +215,11 @@ public class ChompiMovement : MonoBehaviour
         else if (Health <= 0)
         {
             vidas.text = "Perdiste mi rey :(";
+            if (!uno)
+            {
+                ControladorSonidos.Instance.EjecutarSonido(unoDeVida_perdonMaiky);
+            }
+            uno = true;
         }
 
     }
