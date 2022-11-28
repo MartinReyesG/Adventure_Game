@@ -37,11 +37,6 @@ public class BombaScript : MonoBehaviour
         Andatti_Script andatti = other.GetComponent<Andatti_Script>();
         ChompiMovement chompi = other.GetComponent<ChompiMovement>();
        
-        if (andatti != null)
-        {
-            andatti.Hit();
-            //  Debug.Log("andatti");
-        }
         if (chompi != null)
         {
             chompi.Hit();

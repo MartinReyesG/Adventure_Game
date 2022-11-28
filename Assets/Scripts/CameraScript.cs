@@ -9,7 +9,7 @@ public class CameraScript : MonoBehaviour
 
     void Start()
     {
-        ControladorSonidos.Instance.LoopSonido(sonidoDeFondo);
+       // ControladorSonidos.Instance.LoopSonido(sonidoDeFondo);
     }
     // Update is called once per frame
     void Update()

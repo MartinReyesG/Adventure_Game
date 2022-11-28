@@ -37,20 +37,13 @@ public class BalaScript : MonoBehaviour
         Andatti_Script andatti = other.GetComponent<Andatti_Script>();
         ChompiMovement chompi = other.GetComponent<ChompiMovement>();
         CabezaBoss boss = other.GetComponent<CabezaBoss>();
-        if (andatti != null)
-        {
-            andatti.Hit();
-          //  Debug.Log("andatti");
-        }
+
         if (chompi != null)
         {
             chompi.Hit();
          //   Debug.Log("chompi");
         }
-        if (boss != null)
-        {
-            boss.Hit();
-        }
+
         DestroyBullet();
       //  Debug.Log("destroy");
     }

@@ -40,6 +40,11 @@ public class ChompiMovement : MonoBehaviour
 
     void Update() //loop
     {
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            ReiniciarJuego();
+        }
         if (Health == 0)
         {
             mamastePalo();
