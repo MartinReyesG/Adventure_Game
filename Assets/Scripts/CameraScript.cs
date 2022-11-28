@@ -5,7 +5,12 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public GameObject Chompi; //crea una referencia al personaje principal
+    [SerializeField] public AudioClip sonidoDeFondo;
 
+    void Start()
+    {
+        ControladorSonidos.Instance.LoopSonido(sonidoDeFondo);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -16,4 +21,10 @@ public class CameraScript : MonoBehaviour
             transform.position = position;
         }
     }
+
+    public void detener(AudioClip sonido)
+    {
+        ControladorSonidos.Instance.DetenerSonido(sonidoDeFondo);
+    }
+    
 }

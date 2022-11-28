@@ -30,4 +30,17 @@ public class ControladorSonidos : MonoBehaviour
     {
         audio.PlayOneShot(sonido);
     }
+    
+    public void DetenerSonido(AudioClip sonido)
+    {
+        audio.Stop(); 
+    }
+
+
+    public void LoopSonido(AudioClip sonido)
+    {
+        audio.loop = true;
+        audio.PlayOneShot(sonido);
+    }
+
 }

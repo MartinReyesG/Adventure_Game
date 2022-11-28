@@ -36,7 +36,7 @@ public class BalaScript : MonoBehaviour
         //Debug.Log("trigger");
         Andatti_Script andatti = other.GetComponent<Andatti_Script>();
         ChompiMovement chompi = other.GetComponent<ChompiMovement>();
-
+        CabezaBoss boss = other.GetComponent<CabezaBoss>();
         if (andatti != null)
         {
             andatti.Hit();
@@ -47,7 +47,10 @@ public class BalaScript : MonoBehaviour
             chompi.Hit();
          //   Debug.Log("chompi");
         }
-
+        if (boss != null)
+        {
+            boss.Hit();
+        }
         DestroyBullet();
       //  Debug.Log("destroy");
     }

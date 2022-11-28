@@ -22,7 +22,7 @@ public class ChompiMovement : MonoBehaviour
     public GameObject uiStandBy;
     public enum GameState { Espera, Corriendo };
     public GameState gameState = GameState.Espera;
-    public bool tieso = false;
+    public bool tieso = false, win=false;
     public TMP_Text vidas;
     public Text contadorVidas;
     private bool uno=false, cinco=false;
@@ -45,6 +45,10 @@ public class ChompiMovement : MonoBehaviour
             mamastePalo();
         }
 
+        if (win)
+        {
+            vidas.text = "Ya ganaste gallazo :)";
+        }
         mostrarTotalVidas();
 
 
@@ -229,5 +233,12 @@ public class ChompiMovement : MonoBehaviour
         {
             Health++;
         }
+    }
+
+
+    public void ganaste()
+    {
+        win = true;
+       Invoke("ReiniciarJuego", 2f);
     }
 }

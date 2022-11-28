@@ -81,35 +81,35 @@ public class Andatti_Script : MonoBehaviour
             switch (selectorAudio)
             {
                 case 1:
-                    Debug.Log("1");
+                  //  Debug.Log("1");
                     ControladorSonidos.Instance.EjecutarSonido(andas_flex);
                     break;
                 case 2:
-                    Debug.Log("2");
+                  //  Debug.Log("2");
                     ControladorSonidos.Instance.EjecutarSonido(apuntele_bien);
                     break;
                 case 3:
-                    Debug.Log("3");
+                  //  Debug.Log("3");
                     ControladorSonidos.Instance.EjecutarSonido(esta_facil_como_tu_ma);
                     break;
                 case 4:
-                    Debug.Log("4");
+                  //  Debug.Log("4");
                     ControladorSonidos.Instance.EjecutarSonido(no_debi_haber_hecho_eso);
                     break;
                 case 5:
-                    Debug.Log("5");
+                   // Debug.Log("5");
                     ControladorSonidos.Instance.EjecutarSonido(si_le_sabes_que);
                     break;
                 case 6:
-                    Debug.Log("6");
+                  //  Debug.Log("6");
                     ControladorSonidos.Instance.EjecutarSonido(sigan_viendo);
                     break;
                 case 7:
-                    Debug.Log("7");
+                  //  Debug.Log("7");
                     ControladorSonidos.Instance.EjecutarSonido(sique);
                     break;
                 default:
-                    Debug.Log("0");
+                  //  Debug.Log("0");
                     break;
             }
             //ControladorSonidos.Instance.EjecutarSonido(muerteFinal);
@@ -123,33 +123,5 @@ public class Andatti_Script : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    /*
-    private void FixedUpdate() //Metodo que actualiza el movimiento del personaje porque la velocidad puede cambiar
-    {
-        //   Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y); //cambia la direccion de Chompi
-        RaycastHit2D informacionSuelo = Physics2D.Raycast(ControladorSuelo.position, Vector2.down, distancia);
-        rb.velocity = new Vector2(velocidad, rb.velocity.y);
-
-        if (informacionSuelo==false)
-        {
-            girar();
-        }
-    }
-
-    public void girar()
-    {
-        movimiendoDerecha = !movimiendoDerecha;
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
-        velocidad *= -1;
-    }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(ControladorSuelo.transform.position, ControladorSuelo.transform.position + Vector3.down * distancia);
-    }
-    
-    */
 
 }

@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class BombaScript : MonoBehaviour
 {
-
-    private Rigidbody2D Rigidbody2D; 
+    private Rigidbody2D Rigidbody2D;
     public float Speed;
     private Vector2 Direction;
     public AudioClip disparo;
@@ -32,19 +31,25 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject); //destruye la bala cuando abarca todas las animaciones 
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        //Debug.Log("trigger");
         Andatti_Script andatti = other.GetComponent<Andatti_Script>();
         ChompiMovement chompi = other.GetComponent<ChompiMovement>();
-        CabezaBoss boss = other.GetComponent<CabezaBoss>();
+       
         if (andatti != null)
         {
             andatti.Hit();
+            //  Debug.Log("andatti");
         }
-        if (boss != null)
+        if (chompi != null)
         {
-            boss.Hit();
+            chompi.Hit();
+            //   Debug.Log("chompi");
         }
+     
         DestroyBullet();
+        //  Debug.Log("destroy");
     }
 }
+
